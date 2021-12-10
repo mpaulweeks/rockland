@@ -4,7 +4,10 @@ import { PhotoPreview } from "./PhotoPreview";
 import { PhotoSort } from "./types";
 
 export function Gallery(props: {db: Database}) {
-  const [sortBy, setSortBy] = useState<PhotoSort>(p => p.date);
+  const [sortBy, setSortBy] = useState<PhotoSort>({
+    sortBy: p =>  p.date,
+    reverse: false,
+  });
 
   const records = props.db.get(sortBy);
 

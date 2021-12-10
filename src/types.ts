@@ -2,7 +2,10 @@ export interface Data {
   photos: Photo[];
 }
 
-export type PhotoSort = (record: Photo) => (string | number | Date);
+export interface PhotoSort {
+  reverse: boolean;
+  sortBy(record: Photo): (string | number | Date);
+}
 
 export interface Photo {
   added: Date;

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import { Database } from './db';
 import { Gallery } from './Gallery';
@@ -6,9 +6,12 @@ import { Gallery } from './Gallery';
 function App() {
   const [db, setDb] = useState<Database>();
 
-  useCallback(async () => {
-    const db = await Database.load();
-    setDb(db);
+  useEffect(() => {
+    (async () => {
+      const db = await Database.load();
+      console.log(db);
+      setDb(db);
+    })();
   }, []);
 
   return (

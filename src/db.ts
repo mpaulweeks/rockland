@@ -5,8 +5,8 @@ export class Database {
   private constructor(
     private readonly data: Data) { }
 
-  get(orderBy: PhotoSort): Photo[] {
-    return sortBy(this.data.photos, orderBy);
+  get(photoSort: PhotoSort): Photo[] {
+    return sortBy(this.data.photos, photoSort.sortBy);
   }
 
   search(terms: string[], orderBy: PhotoSort) {
