@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Database } from "./db";
+import { Database } from "../util/db";
 import { PhotoPreview } from "./PhotoPreview";
-import { Photo, PhotoSort } from "./types";
+import { Photo, PhotoSort } from "../util/types";
 import './Gallery.css';
 import { PhotoFocus } from "./PhotoFocus";
 

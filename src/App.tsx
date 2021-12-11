@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { Database } from './db';
-import { Gallery } from './Gallery';
+import { Database } from './util/db';
+import { Gallery } from './gallery';
 
 function App() {
   const [db, setDb] = useState<Database>();

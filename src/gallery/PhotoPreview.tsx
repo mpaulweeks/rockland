@@ -1,5 +1,5 @@
 import React from "react";
-import { Photo } from "./types";
+import { Photo } from "../util/types";
 import './PhotoPreview.css';
 
 interface PhotoPreviewProps {
