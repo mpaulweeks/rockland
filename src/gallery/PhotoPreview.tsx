@@ -10,14 +10,11 @@ interface PhotoPreviewProps {
 export function PhotoPreview(props: PhotoPreviewProps) {
   const hiRes = `images/${props.photo.image}`;
   return (
-    <div className="PhotoPreview" onClick={() => props.focusPhoto(props.photo)}>
-      <div
-        className="PhotoPreviewImage"
-        style={{backgroundImage: `url(${hiRes})`}}
-      >
-        &nbsp;
-      </div>
-      <br/>
+    <div
+      className="PhotoPreview"
+      style={{backgroundImage: `url(${hiRes})`}}
+      onClick={() => props.focusPhoto(props.photo)}
+    >
       <div className="PhotoPreviewDate">{props.photo.date}</div>
     </div>
   )
