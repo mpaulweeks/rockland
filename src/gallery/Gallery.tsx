@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Database } from "../util/db";
 import { PhotoPreview } from "./PhotoPreview";
 import { Photo, PhotoSort } from "../util/types";
@@ -23,13 +23,25 @@ export function Gallery(props: GalleryProps) {
   function handleKeyDown(code: string) {
     if (focused === undefined) { return; }
     console.log(code);
-    if (code === 'ArrowLeft') {
-      setFocused(getPrevInArray(focused, records));
-    }
-    if (code === 'ArrowRight') {
-      setFocused(getNextInArray(focused, records));
-    }
   };
+  useEffect(() => {
+    const onKeyDown = (evt: KeyboardEvent) => {
+      const records = props.db.get(sortBy);
+      if (evt.code === 'ArrowLeft') {
+        setFocused(current => getPrevInArray(current, records));
+      }
+      if (evt.code === 'ArrowRight') {
+        setFocused(current => getNextInArray(current, records));
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div
