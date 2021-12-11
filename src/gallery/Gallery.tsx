@@ -5,6 +5,7 @@ import { Photo, PhotoSort } from "../util/types";
 import './Gallery.css';
 import { PhotoFocus } from "./PhotoFocus";
 import { getNextInArray, getPrevInArray } from "../util/util";
+import { UrlManager } from "../util/url";
 
 interface GalleryProps {
   db: Database;
@@ -18,9 +19,23 @@ export function Gallery(props: GalleryProps) {
     reverse: false,
   });
 
+  // todo how to run after every setFocused?
+  function updateFocused(photo: Photo | undefined) {
+    setFocused(photo);
+    new UrlManager().setUrl(photo);
+  }
   const records = props.searchTerms.length
     ? props.db.search(props.searchTerms, sortBy)
     : props.db.get(sortBy);
+
+  useEffect(() => {
+    const hash = new UrlManager().readUrl();
+    if (hash) {
+      const match = records.filter(p => p.image === hash)[0];
+      console.log(hash, match);
+      updateFocused(match);
+    }
+  }, []);
 
   // todo does not work :(
   function handleKeyDown(code: string) {
