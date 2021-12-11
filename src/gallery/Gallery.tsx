@@ -8,6 +8,7 @@ import { getNextInArray, getPrevInArray } from "../util/util";
 
 interface GalleryProps {
   db: Database;
+  searchTerms: string[];
 }
 
 export function Gallery(props: GalleryProps) {
@@ -17,7 +18,9 @@ export function Gallery(props: GalleryProps) {
     reverse: false,
   });
 
-  const records = props.db.get(sortBy);
+  const records = props.searchTerms.length
+    ? props.db.search(props.searchTerms, sortBy)
+    : props.db.get(sortBy);
 
   // todo does not work :(
   function handleKeyDown(code: string) {
