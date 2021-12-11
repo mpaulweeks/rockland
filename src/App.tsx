@@ -3,7 +3,7 @@ import './App.css';
 import { Database } from './util/db';
 import { Gallery } from './gallery';
 
-function App() {
+export function App() {
   const [db, setDb] = useState<Database>();
   const [searchRaw, setSearchRaw] = useState<string>('');
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
@@ -22,14 +22,17 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>
-        Rockland Fan Site
+    <div>
+      <header>
+        <h1>
+          Rockland Fan Site
+        </h1>
         <input
+          placeholder="Type here to search"
           value={searchRaw}
           onChange={evt => parseSearchTerms(evt.target.value)}
         />
-      </h1>
+      </header>
       {db ? (
         <Gallery db={db} searchTerms={searchTerms} />
       ):(
@@ -38,5 +41,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
