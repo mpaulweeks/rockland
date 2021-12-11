@@ -11,13 +11,13 @@ export function PhotoFocus(props: PhotoFocusProps) {
   return (
     <div className="PhotoFocus" onClick={props.onExit}>
       <div
-        className="PhotoImage"
+        className="PhotoFocusImage"
         style={{backgroundImage: `url(${hiRes})`}}
       >
         &nbsp;
       </div>
-      <div className="PhotoDate">{props.photo.date}</div>
-      <div className="PhotoDescription">{props.photo.description}</div>
+      <div className="PhotoFocusDate">{props.photo.date}</div>
+      <div className="PhotoFocusDescription">{props.photo.description}</div>
     </div>
   )
 }

@@ -4,7 +4,8 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.8);
+  color: white;
 
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@
   align-items: center;
 }
 
-.PhotoImage {
+.PhotoFocusImage {
   height: 70vh;
   width: 100%;
 
@@ -21,7 +22,7 @@
   background-size: contain;
 }
 
-.PhotoDate {
+.PhotoFocusDate {
   height: 10vh;
   font-size: 20px;
 
@@ -30,7 +31,7 @@
   justify-content: center;
   align-items: center;
 }
-.PhotoDescription {
+.PhotoFocusDescription {
   height: 10vh;
   font-size: 16px;
 
