@@ -33,6 +33,9 @@ export function Gallery(props: GalleryProps) {
       if (evt.code === 'ArrowRight') {
         setFocused(current => getNextInArray(current, records));
       }
+      if (evt.code === 'Escape') {
+        setFocused(undefined);
+      }
     }
 
     document.addEventListener('keydown', onKeyDown);
