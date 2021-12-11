@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { Database } from "./db";
 import { PhotoPreview } from "./PhotoPreview";
-import { PhotoSort } from "./types";
+import { Photo, PhotoSort } from "./types";
+import './Gallery.css';
+import { PhotoFocus } from "./PhotoFocus";
 
-export function Gallery(props: {db: Database}) {
+interface GalleryProps {
+  db: Database;
+}
+
+export function Gallery(props: GalleryProps) {
+  const [focused, setFocused] = useState<Photo>();
   const [sortBy, setSortBy] = useState<PhotoSort>({
     sortBy: p =>  p.date,
     reverse: false,
@@ -12,8 +19,20 @@ export function Gallery(props: {db: Database}) {
   const records = props.db.get(sortBy);
 
   return (
-    <div>
-      {records.map((p, i) => <PhotoPreview key={i} photo={p} />)}
+    <div className="GalleryContainer">
+      {records.map((p, i) => (
+        <PhotoPreview
+          key={i}
+          photo={p}
+          focusPhoto={p => setFocused(p)}
+        />
+      ))}
+      {focused && (
+        <PhotoFocus
+          photo={focused}
+          onExit={() => setFocused(undefined)}
+        />
+      )}
     </div>
   )
 }
