@@ -7,9 +7,17 @@ interface PhotoFocusProps {
 }
 
 export function PhotoFocus(props: PhotoFocusProps) {
+  const hiRes = `images/${props.photo.image}`;
   return (
     <div className="PhotoFocus" onClick={props.onExit}>
-      {JSON.stringify(props.photo)}
+      <div
+        className="PhotoImage"
+        style={{backgroundImage: `url(${hiRes})`}}
+      >
+        &nbsp;
+      </div>
+      <div className="PhotoDate">{props.photo.date}</div>
+      <div className="PhotoDescription">{props.photo.description}</div>
     </div>
   )
 }
