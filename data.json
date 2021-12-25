@@ -1,22 +1,28 @@
 {
   "photos": [
     {
-      "added": "2021-01-03",
-      "date": "1952",
-      "image": "test1952.jpg",
-      "description": "ice-covered ship"
+      "added": "2021-12-05",
+      "image": "2021-12-05.jpg",
+      "date": "1948",
+      "description": "A Dec. 4, 1948 photo of Santa being greeted by a large crowd as he made a visit to Bitler’s Car & Home Supply that was located at 470 Main Street near the corner of Lindsey Street."
     },
     {
-      "added": "2021-01-02",
+      "added": "2021-11-28",
+      "image": "2021-11-28.jpg",
+      "date": "1875",
+      "description": "A c.1875 view of North Main Street from the intersection with Main Street. The brick building barely visible on the left is the Rankin Block. The small building to the right of the Rankin Block is a barbershop. Further up North Main Street on the left is the two-story brick house built by David Gay. This is where the Free Press is located today. A wagon loaded with barrels probably from Blackington’s Corner or beyond can be seen in the middle of North Main Street on its way to a lime kiln along the shore."
+    },
+    {
+      "added": "2021-11-21",
+      "image": "2021-11-21.jpg",
       "date": "1956",
-      "image": "test1956.jpg",
-      "description": "Senter Crane's"
+      "description": "A September 10, 1956 photo of Kennedy Crane Jr. standing in front of the Senter-Crane's Department Store that was located in the Pillsbury Block at 386 Main Street from 1926-1994."
     },
     {
-      "added": "2021-01-01",
-      "date": "1890",
-      "image": "test1890.jpg",
-      "description": "an old school"
+      "added": "2021-11-11",
+      "image": "2021-11-11.jpg",
+      "date": "1963",
+      "description": "A c.1963 interior photo of Al's Hairdressing Salon that was located on Main Street near the corner of Park Street. Chapman Park is located there today. Employee Fay Molloy can be seen in the front having her hair done by fellow beautician Sally Nord. Photo courtesy of Tom Molloy."
     }
   ]
 }
