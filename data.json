@@ -1,0 +1,22 @@
+{
+  "photos": [
+    {
+      "added": "2021-01-03",
+      "date": "1952",
+      "image": "test1952.jpg",
+      "description": "ice-covered ship"
+    },
+    {
+      "added": "2021-01-02",
+      "date": "1956",
+      "image": "test1956.jpg",
+      "description": "Senter Crane's"
+    },
+    {
+      "added": "2021-01-01",
+      "date": "1890",
+      "image": "test1890.jpg",
+      "description": "an old school"
+    }
+  ]
+}
