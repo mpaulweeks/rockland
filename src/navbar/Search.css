@@ -1,0 +1,12 @@
+.Search {
+  font-size: 1.5rem;
+  padding: 0.5em;
+  border: 0.1em solid black;
+  border-radius: 0.5em;
+}
+
+@media (max-width: 600px) {
+  .Search {
+    display: none;
+  }
+}
