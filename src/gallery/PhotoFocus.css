@@ -4,7 +4,11 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,0.8);
+
+  padding: 1rem;
+  box-sizing: border-box;
+
+  background: rgba(0,0,0,0.9);
   color: white;
 
   display: flex;
@@ -22,18 +26,11 @@
   background-size: contain;
 }
 
-.PhotoFocusDate {
-  height: 10vh;
-  font-size: 20px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .PhotoFocusDescription {
-  height: 10vh;
   font-size: 16px;
+
+  padding: 2rem 4em;
+  box-sizing: border-box;
 
   display: flex;
   flex-direction: column;
