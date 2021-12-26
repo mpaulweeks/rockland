@@ -28,7 +28,7 @@ export function App() {
       {db ? (
         <Gallery db={db} searchTerms={searchTerms} sortBy={sortBy} />
       ) : (
-        <h1>loading...</h1>
+        <div className='AppLoading'>loading...</div>
       )}
     </div>
   );
