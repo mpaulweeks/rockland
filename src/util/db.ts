@@ -11,7 +11,9 @@ export class Database {
   }
 
   search(terms: string[], orderBy: PhotoSort) {
-    return this.get(orderBy).filter(p => terms.some(t => p.description.includes(t)));
+    return this.get(orderBy).filter(p => terms.some(t =>
+      p.description.toLowerCase().includes(t.toLowerCase())
+    ));
   }
 
   static async load() {

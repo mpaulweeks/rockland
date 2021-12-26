@@ -10,7 +10,7 @@ export function Search(props: SearchProps) {
 
   function parseSearchTerms(raw: string) {
     setSearchRaw(raw);
-    props.setSearchTerms(raw.split(' ').map(s => s.trim()).filter(s => !!s));
+    props.setSearchTerms(raw.trim().split(' ').map(s => s.trim()).filter(s => !!s));
   }
 
   return (
