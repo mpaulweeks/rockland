@@ -6,7 +6,8 @@ export class Database {
     private readonly data: Data) { }
 
   get(photoSort: PhotoSort): Photo[] {
-    return sortBy(this.data.photos, photoSort.sortBy);
+    const sorted = sortBy(this.data.photos, photoSort.sortBy);
+    return photoSort.reverse ? sorted.reverse() : sorted;
   }
 
   search(terms: string[], orderBy: PhotoSort) {

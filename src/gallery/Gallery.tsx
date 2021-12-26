@@ -15,8 +15,8 @@ interface GalleryProps {
 export function Gallery(props: GalleryProps) {
   const [focused, setFocused] = useState<Photo>();
   const [sortBy, setSortBy] = useState<PhotoSort>({
-    sortBy: p =>  p.date,
-    reverse: false,
+    sortBy: p => p.added,
+    reverse: true,
   });
 
   // todo how to run after every setFocused?
@@ -61,13 +61,13 @@ export function Gallery(props: GalleryProps) {
     return () => {
       document.removeEventListener('keydown', onKeyDown);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div
-     className="GalleryContainer"
-     onKeyDown={evt => handleKeyDown(evt.code)}
+      className="GalleryContainer"
+      onKeyDown={evt => handleKeyDown(evt.code)}
     >
       {records.map((p, i) => (
         <PhotoPreview
