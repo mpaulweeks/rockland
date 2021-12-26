@@ -1,2 +1,2 @@
-export * from './Search';
-export * from './Sorter';
+export * from './Navbar';
+export { DefaultSortBy } from './Sorter';

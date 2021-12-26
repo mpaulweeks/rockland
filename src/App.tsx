@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Database } from './util/db';
 import { Gallery } from './gallery';
-import { DefaultSortBy, Search, Sorter } from './navbar';
+import { DefaultSortBy, Navbar } from './navbar';
 import { PhotoSort } from './util/types';
 
 export function App() {
@@ -20,13 +20,11 @@ export function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>
-          Rockland Fan Site
-        </h1>
-        <Sorter sortBy={sortBy} setSortBy={setSortBy} />
-        <Search setSearchTerms={setSearchTerms} />
-      </header>
+      <Navbar
+        setSearchTerms={setSearchTerms}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
+      />
       {db ? (
         <Gallery db={db} searchTerms={searchTerms} sortBy={sortBy} />
       ) : (

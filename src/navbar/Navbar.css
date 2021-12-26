@@ -1,0 +1,16 @@
+
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.Navbar > * {
+  margin: 0.5rem 2rem;
+}
+
+.Navbar h1 {
+  flex-grow: 1;
+}
