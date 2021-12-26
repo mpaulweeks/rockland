@@ -1,8 +1,22 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
 header {
-  padding: 0.5rem 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
+}
+
+header > * {
+  margin: 0.5rem 2rem;
+}
+
+header h1 {
+  flex-grow: 1;
 }
