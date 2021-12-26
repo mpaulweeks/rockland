@@ -13,10 +13,17 @@ export const DefaultSortBy: PhotoSort = {
   reverse: true,
 };
 const SortOptions: PhotoSort[] = [
-  DefaultSortBy,
-  {
-    label: 'Photo Date',
+  DefaultSortBy, {
+    label: 'Date Ascending',
     sortBy: p => p.date,
+    reverse: false,
+  }, {
+    label: 'Date Descending',
+    sortBy: p => p.date,
+    reverse: true,
+  }, {
+    label: 'Shuffle',
+    sortBy: p => Math.random(),
     reverse: false,
   },
 ];
