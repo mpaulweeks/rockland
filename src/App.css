@@ -13,3 +13,9 @@ header input {
   border: 0.1em solid black;
   border-radius: 0.5em;
 }
+
+@media (max-width: 600px) {
+  header input {
+    display: none;
+  }
+}
