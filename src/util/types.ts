@@ -3,6 +3,7 @@ export interface Data {
 }
 
 export interface PhotoSort {
+  label: string;
   reverse: boolean;
   sortBy(record: Photo): (string | number | Date);
 }

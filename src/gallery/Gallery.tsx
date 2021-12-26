@@ -10,14 +10,11 @@ import { UrlManager } from "../util/url";
 interface GalleryProps {
   db: Database;
   searchTerms: string[];
+  sortBy: PhotoSort;
 }
 
 export function Gallery(props: GalleryProps) {
   const [focused, setFocused] = useState<Photo>();
-  const [sortBy, setSortBy] = useState<PhotoSort>({
-    sortBy: p => p.added,
-    reverse: true,
-  });
 
   // todo how to run after every setFocused?
   function updateFocused(photo: Photo | undefined) {
@@ -25,8 +22,8 @@ export function Gallery(props: GalleryProps) {
     new UrlManager().setUrl(photo);
   }
   const records = props.searchTerms.length
-    ? props.db.search(props.searchTerms, sortBy)
-    : props.db.get(sortBy);
+    ? props.db.search(props.searchTerms, props.sortBy)
+    : props.db.get(props.sortBy);
 
   useEffect(() => {
     const hash = new UrlManager().readUrl();
@@ -44,7 +41,7 @@ export function Gallery(props: GalleryProps) {
   };
   useEffect(() => {
     const onKeyDown = (evt: KeyboardEvent) => {
-      const records = props.db.get(sortBy);
+      const records = props.db.get(props.sortBy);
       if (evt.code === 'ArrowLeft') {
         setFocused(current => getPrevInArray(current, records));
       }
