@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
 
-  padding: 1rem;
+  padding: 2rem;
   box-sizing: border-box;
 
   background: rgba(0,0,0,0.9);
@@ -13,13 +13,12 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: stretch;
+  align-items: stretch;
 }
 
 .PhotoFocusImage {
-  height: 70vh;
-  width: 100%;
+  flex: 1;
 
   background-position: center;
   background-repeat: no-repeat;
@@ -27,9 +26,11 @@
 }
 
 .PhotoFocusDescription {
-  font-size: 16px;
-
-  padding: 2rem 4em;
+  margin: 0 auto;
+  margin-top: 2em;
+  min-height: 18vh;
+  max-width: 120vh;
+  padding: 0 1em;
   box-sizing: border-box;
 
   display: flex;
