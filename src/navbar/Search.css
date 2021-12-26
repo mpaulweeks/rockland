@@ -1,8 +1,9 @@
 .Search {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   padding: 0.5em;
   border: 0.1em solid black;
   border-radius: 0.5em;
+  width: 16em;
 }
 
 @media (max-width: 600px) {
