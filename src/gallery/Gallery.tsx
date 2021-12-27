@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Database } from "../util/db";
 import { PhotoPreview } from "./PhotoPreview";
 import { Photo, PhotoSort } from "../util/types";
@@ -20,10 +20,19 @@ export function Gallery(props: GalleryProps) {
   const hasReadHash = useRef(false);
   const [focused, setFocused] = useState<Photo>();
 
-  const records = props.searchTerms.length
-    ? props.db.search(props.searchTerms, props.sortBy)
-    : props.db.get(props.sortBy);
+  const { slideshow, db, searchTerms, sortBy, setSlideshow } = props;
+  const records = searchTerms.length
+    ? db.search(searchTerms, sortBy)
+    : db.get(sortBy);
+  const updateFocused = useCallback((photo: Photo | undefined) => {
+    setFocused(photo);
+    URL.setUrl(photo);
+    if (photo === undefined) {
+      setSlideshow(false);
+    }
+  }, [setSlideshow]);
 
+  // handle hash on first render
   useEffect(() => {
     // https://betterprogramming.pub/stop-lying-to-react-about-missing-dependencies-10612e9aeeda
     if (hasReadHash.current) { return; }
@@ -36,23 +45,23 @@ export function Gallery(props: GalleryProps) {
     }
 
     hasReadHash.current = true;
-  }, [records]);
+  }, [records, updateFocused]);
 
+  // handle slideshow
   useEffect(() => {
-    if (props.slideshow) {
-      setInterval(() => {
+    if (slideshow) {
+      if (focused) {
+        const timer = window.setTimeout(() => {
+          updateFocused(getNextInArray(focused, records));
+        }, 2000);
+        return () => window.clearTimeout(timer);
+      } else {
         updateFocused(getNextInArray(focused, records));
-      }, 500);
+      }
     }
-  }, [props, focused]);
+  }, [focused, records, slideshow, updateFocused]);
 
-  function updateFocused(photo: Photo | undefined) {
-    setFocused(photo);
-    URL.setUrl(photo);
-    if (photo === undefined) {
-      props.setSlideshow(false);
-    }
-  }
+  // helpers
   KEYBOARD.setCallback(evt => {
     if (evt.code === 'ArrowLeft') {
       updateFocused(getPrevInArray(focused, records));
@@ -69,6 +78,7 @@ export function Gallery(props: GalleryProps) {
     }
   });
 
+  // render
   return (
     <div className="GalleryContainer">
       {records.map((p, i) => (

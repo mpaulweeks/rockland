@@ -14,7 +14,6 @@ export function App() {
   useEffect(() => {
     (async () => {
       const db = await Database.load();
-      console.log(db);
       setDb(db);
     })();
   }, []);
