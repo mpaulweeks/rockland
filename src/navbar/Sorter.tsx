@@ -43,7 +43,7 @@ export function Sorter(props: SorterProps) {
   const current = SortOptions[indexOf(props.sortBy.label)];
 
   return (
-    <select className="Sorter" onChange={evt => onChange(evt.target.value)} value={current.label}>
+    <select className="Sorter NavbarElm" onChange={evt => onChange(evt.target.value)} value={current.label}>
       {SortOptions.map(opt => (
         <option
           key={opt.label}

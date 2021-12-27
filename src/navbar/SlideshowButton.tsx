@@ -7,11 +7,10 @@ interface SlideshowButtonProps {
 
 export function SlideshowButton(props: SlideshowButtonProps) {
   return (
-    <button
-      className="SlideshowButton"
-      onClick={() => props.setSlideshow(true)}
-    >
-      Slideshow
-    </button>
+    <div className="SlideshowButton NavbarElm">
+      <button onClick={() => props.setSlideshow(true)}>
+        Slideshow
+      </button>
+    </div>
   )
 }

@@ -5,9 +5,3 @@
   border-radius: 0.5em;
   width: 16em;
 }
-
-@media (max-width: 1000px) {
-  .Search {
-    display: none;
-  }
-}

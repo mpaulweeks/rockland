@@ -15,7 +15,7 @@ export function Search(props: SearchProps) {
 
   return (
     <input
-      className="Search"
+      className="Search NavbarElm"
       placeholder="Type here to search"
       value={searchRaw}
       onChange={evt => parseSearchTerms(evt.target.value)}
