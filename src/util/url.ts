@@ -1,6 +1,6 @@
 import { Photo } from "./types";
 
-export class UrlManager {
+class UrlManager {
   readUrl(): string | undefined {
     const hash = window.location.hash.split('#').pop();
     console.log('hash', hash);
@@ -10,10 +10,12 @@ export class UrlManager {
     // https://stackoverflow.com/a/14690177
     const hash = `#${photo?.image ?? ''}`;
     if (window.history.pushState) {
-      window.history.pushState(null, '', hash);
+      window.history.pushState(null, document.title, hash);
     }
     else {
       window.location.hash = hash;
     }
   }
 }
+
+export const URL = new UrlManager();

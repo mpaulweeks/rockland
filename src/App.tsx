@@ -8,6 +8,7 @@ import { PhotoSort } from './util/types';
 export function App() {
   const [db, setDb] = useState<Database>();
   const [searchTerms, setSearchTerms] = useState<string[]>([]);
+  const [slideshow, setSlideshow] = useState<boolean>(false);
   const [sortBy, setSortBy] = useState<PhotoSort>(DefaultSortBy);
 
   useEffect(() => {
@@ -21,12 +22,19 @@ export function App() {
   return (
     <div className="App">
       <Navbar
+        setSlideshow={setSlideshow}
         setSearchTerms={setSearchTerms}
         sortBy={sortBy}
         setSortBy={setSortBy}
       />
       {db ? (
-        <Gallery db={db} searchTerms={searchTerms} sortBy={sortBy} />
+        <Gallery
+          db={db}
+          slideshow={slideshow}
+          setSlideshow={setSlideshow}
+          searchTerms={searchTerms}
+          sortBy={sortBy}
+        />
       ) : (
         <div className='AppLoading'>loading...</div>
       )}

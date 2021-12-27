@@ -5,11 +5,13 @@ import { Photo, PhotoSort } from "../util/types";
 import './Gallery.css';
 import { PhotoFocus } from "./PhotoFocus";
 import { getNextInArray, getPrevInArray } from "../util/util";
-import { UrlManager } from "../util/url";
 import { KEYBOARD } from "./KeyboardListener";
+import { URL } from "../util/url";
 
 interface GalleryProps {
   db: Database;
+  slideshow: boolean;
+  setSlideshow(value: boolean): void;
   searchTerms: string[];
   sortBy: PhotoSort;
 }
@@ -26,7 +28,7 @@ export function Gallery(props: GalleryProps) {
     // https://betterprogramming.pub/stop-lying-to-react-about-missing-dependencies-10612e9aeeda
     if (hasReadHash.current) { return; }
 
-    const hash = new UrlManager().readUrl();
+    const hash = URL.readUrl();
     if (hash) {
       const match = records.filter(p => p.image === hash)[0];
       console.log('hash', hash, match);
@@ -36,9 +38,20 @@ export function Gallery(props: GalleryProps) {
     hasReadHash.current = true;
   }, [records]);
 
+  useEffect(() => {
+    if (props.slideshow) {
+      setInterval(() => {
+        updateFocused(getNextInArray(focused, records));
+      }, 500);
+    }
+  }, [props, focused]);
+
   function updateFocused(photo: Photo | undefined) {
     setFocused(photo);
-    new UrlManager().setUrl(photo);
+    URL.setUrl(photo);
+    if (photo === undefined) {
+      props.setSlideshow(false);
+    }
   }
   KEYBOARD.setCallback(evt => {
     if (evt.code === 'ArrowLeft') {
@@ -50,6 +63,10 @@ export function Gallery(props: GalleryProps) {
     if (evt.code === 'Escape') {
       updateFocused(undefined);
     }
+    if (evt.code === 'KeyS') {
+      updateFocused(records[0]);
+      props.setSlideshow(true);
+    }
   });
 
   return (
@@ -58,13 +75,13 @@ export function Gallery(props: GalleryProps) {
         <PhotoPreview
           key={i}
           photo={p}
-          focusPhoto={p => setFocused(p)}
+          focusPhoto={p => updateFocused(p)}
         />
       ))}
       {focused && (
         <PhotoFocus
           photo={focused}
-          onExit={() => setFocused(undefined)}
+          onExit={() => updateFocused(undefined)}
         />
       )}
     </div>
