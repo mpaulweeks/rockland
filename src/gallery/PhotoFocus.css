@@ -38,3 +38,25 @@
   justify-content: center;
   align-items: center;
 }
+
+.PhotoPrev, .PhotoNext {
+  position: fixed;
+  cursor: pointer;
+
+  font-size: 3rem;
+  top: 1rem;
+
+  line-height: 50%;
+}
+.PhotoPrev {
+  left: 1rem;
+}
+.PhotoPrev::before {
+  content: '<';
+}
+.PhotoNext {
+  right: 1rem;
+}
+.PhotoNext::before {
+  content: '>';
+}

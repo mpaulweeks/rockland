@@ -91,6 +91,8 @@ export function Gallery(props: GalleryProps) {
       {focused && (
         <PhotoFocus
           photo={focused}
+          onPrev={() => updateFocused(getPrevInArray(focused, records))}
+          onNext={() => updateFocused(getNextInArray(focused, records))}
           onExit={() => updateFocused(undefined)}
         />
       )}
