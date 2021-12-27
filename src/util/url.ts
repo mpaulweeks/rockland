@@ -7,6 +7,12 @@ export class UrlManager {
     return hash;
   }
   setUrl(photo?: Photo): void {
-    window.location.replace(`#${photo?.image ?? ''}`);
+    const hash = `#${photo?.image ?? ''}`;
+    if (window.history.pushState) {
+      window.history.pushState(null, '', hash);
+    }
+    else {
+      window.location.hash = hash;
+    }
   }
 }
