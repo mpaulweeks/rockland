@@ -16,7 +16,7 @@ export function Navbar(props: NavbarProps) {
   return (
     <header className="Navbar">
       <h1>
-        Rockland Fan Site
+        Rockland History 🦞
       </h1>
       <SlideshowButton setSlideshow={props.setSlideshow} />
       <Sorter sortBy={props.sortBy} setSortBy={props.setSortBy} />
