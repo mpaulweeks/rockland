@@ -14,35 +14,33 @@ interface GalleryProps {
   sortBy: PhotoSort;
 }
 
-function getRecords(props: GalleryProps): Photo[] {
-  return props.searchTerms.length
-    ? props.db.search(props.searchTerms, props.sortBy)
-    : props.db.get(props.sortBy);
-}
-
 export function Gallery(props: GalleryProps) {
   const hasReadHash = useRef(false);
   const [focused, setFocused] = useState<Photo>();
 
+  const records = props.searchTerms.length
+    ? props.db.search(props.searchTerms, props.sortBy)
+    : props.db.get(props.sortBy);
+
   useEffect(() => {
+    // https://betterprogramming.pub/stop-lying-to-react-about-missing-dependencies-10612e9aeeda
     if (hasReadHash.current) { return; }
 
     const hash = new UrlManager().readUrl();
     if (hash) {
-      const match = getRecords(props).filter(p => p.image === hash)[0];
-      console.log(hash, match);
+      const match = records.filter(p => p.image === hash)[0];
+      console.log('hash', hash, match);
       updateFocused(match);
     }
 
     hasReadHash.current = true;
-  }, [props]);
+  }, [records]);
 
   function updateFocused(photo: Photo | undefined) {
     setFocused(photo);
     new UrlManager().setUrl(photo);
   }
   KEYBOARD.setCallback(evt => {
-    const records = getRecords(props);
     if (evt.code === 'ArrowLeft') {
       updateFocused(getPrevInArray(focused, records));
     }
@@ -54,7 +52,6 @@ export function Gallery(props: GalleryProps) {
     }
   });
 
-  const records = getRecords(props);
   return (
     <div className="GalleryContainer">
       {records.map((p, i) => (

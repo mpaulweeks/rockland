@@ -7,6 +7,7 @@ export class UrlManager {
     return hash;
   }
   setUrl(photo?: Photo): void {
+    // https://stackoverflow.com/a/14690177
     const hash = `#${photo?.image ?? ''}`;
     if (window.history.pushState) {
       window.history.pushState(null, '', hash);
